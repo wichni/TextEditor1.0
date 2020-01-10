@@ -1,13 +1,12 @@
 package org.example;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+import myFrame.MyFrame;
+
+import javax.swing.*;
+
+public class App extends JFrame {
+
+    public static void main(String[] args) {
+        new MyFrame().initEditor();
     }
 }
