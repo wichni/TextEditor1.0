@@ -1,17 +1,24 @@
 package myFrame;
 
+import Menu.MyMenuBar;
+import Menu.editButtons.CopyButton;
+import Menu.editButtons.CutButton;
+import Menu.editButtons.PasteButton;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class MyFrame {
     private static JFrame jFrame = new JFrame("Text editor");
+    private final MyMenuBar menuBar = new MyMenuBar();
+    private final JTextArea textArea = new JTextArea();
 
     public MyFrame() throws HeadlessException {
     }
 
     public void initEditor() {
-        MenuBar menuBar = setMenuBar();
-        jFrame.setJMenuBar(menuBar);
+        jFrame.add(textArea);
+        setMenuBar();
         setFrameSize();
         setCloseOperation();
         setJFrameVisible();
@@ -25,11 +32,12 @@ public class MyFrame {
         jFrame.setVisible(true);
     }
 
-    private MenuBar setMenuBar() {
-        MenuBar menuBar = new MenuBar();
+    private MyMenuBar setMenuBar() {
         menuBar.add(menuBar.setFileMenu());
         menuBar.add(menuBar.setEditMenu());
         menuBar.add(menuBar.setHelpMenu());
+        jFrame.setJMenuBar(menuBar);
+
         return menuBar;
     }
 
