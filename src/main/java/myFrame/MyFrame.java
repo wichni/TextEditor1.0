@@ -2,41 +2,45 @@ package myFrame;
 
 import javax.swing.*;
 import java.awt.*;
+import Menu.MenuBar;
 
-public class MyFrame {
-    private static JFrame jFrame = new JFrame("Text editor");
+
+public class MyFrame extends JFrame {
+    private static JTextArea textArea = new JTextArea();
+    private static MenuBar menuBar = new MenuBar();
 
     public MyFrame() throws HeadlessException {
-    }
-
-    public void initEditor() {
-        MenuBar menuBar = setMenuBar();
-        jFrame.setJMenuBar(menuBar);
-        setFrameSize();
+        setUpMenuBar();
+        this.setTitle("Text editor");
+        this.add(textArea);
+        this.setJMenuBar(menuBar);
         setCloseOperation();
+        setFrameSize();
         setJFrameVisible();
     }
 
     private void setCloseOperation() {
-        jFrame.setDefaultCloseOperation(3);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     private void setJFrameVisible() {
-        jFrame.setVisible(true);
+        this.setVisible(true);
     }
 
-    private MenuBar setMenuBar() {
-        MenuBar menuBar = new MenuBar();
-        menuBar.add(menuBar.setFileMenu());
-        menuBar.add(menuBar.setEditMenu());
-        menuBar.add(menuBar.setHelpMenu());
-        return menuBar;
+    private void setUpMenuBar() {
+        final JMenu fileMenu = menuBar.getFileMenu();
+        menuBar.add(fileMenu);
     }
 
     private void setFrameSize() {
         int width = Toolkit.getDefaultToolkit().getScreenSize().width;
         int height = Toolkit.getDefaultToolkit().getScreenSize().height;
-        jFrame.setSize(width / 2, height / 2);
-        jFrame.setLocation(width / 4, height / 4);
+
+        this.setSize(width / 2, height / 2);
+        this.setLocation(width / 4, height / 4);
+    }
+
+    public static JTextArea getTextArea() {
+        return textArea;
     }
 }
