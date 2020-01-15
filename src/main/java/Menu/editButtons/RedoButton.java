@@ -9,30 +9,30 @@ import javax.swing.undo.UndoManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class UndoButton extends JMenuItem {
+public class RedoButton extends JMenuItem{
     private JTextArea textArea = MyFrame.getTextArea();
 
-    public JMenuItem setUndoButton() {
-        JMenuItem undoButton = new JMenuItem();
-        UndoManager undoManager = new UndoManager();
-        undoButton.setText("Undo");
-        undoButton.setToolTipText("Undo (Ctrl + Z)");
+    public JMenuItem setRedoButton() {
+        JMenuItem redoButton = new JMenuItem();
+        UndoManager redoManager = new UndoManager();
+        redoButton.setText("Redo");
+        redoButton.setToolTipText("Redo (Ctrl + Y)");
 
         textArea.getDocument().addUndoableEditListener(new UndoableEditListener() {
             @Override
             public void undoableEditHappened(UndoableEditEvent e) {
-                undoManager.addEdit(e.getEdit());
+                redoManager.addEdit(e.getEdit());
             }
         });
 
-        undoButton.addActionListener(new ActionListener() {
+        redoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (undoManager.canUndo()) {
-                    undoManager.undo();
+                if (redoManager.canRedo()) {
+                    redoManager.redo();
                 }
             }
         });
-        return undoButton;
+        return redoButton;
     }
 }

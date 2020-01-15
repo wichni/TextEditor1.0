@@ -2,10 +2,10 @@ package Menu.radioButton;
 
 import javax.swing.*;
 
-public class VerifyButton extends JButton {
+public class VerifyButton extends JRadioButton {
 
-    public JButton buildVerifyButton() {
-        JButton verifyButton = new JButton();
+    public JRadioButton buildVerifyButton() {
+        JRadioButton verifyButton = new JRadioButton();
         verifyButton.setText("Verify");
 
         return verifyButton;
