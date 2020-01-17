@@ -59,7 +59,8 @@ class FileMenu extends JMenu implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         final Object source = e.getSource();
-        final JTextArea textArea = MyFrame.getTextArea();
+        final JTextArea textArea = MyFrame.getTopTextArea();
+        final JTextArea bottomTextArea = MyFrame.getBottomTextArea();
         JFileChooser fileChooser = new JFileChooser();
 
         if (source == open) {
@@ -69,7 +70,11 @@ class FileMenu extends JMenu implements ActionListener {
         } else if (source == print) {
             FileAction.printAction(textArea);
         } else if (source == newFile) {
-            FileAction.clearAction(textArea);
+            FileAction.clearAction(textArea, bottomTextArea);
         }
+    }
+
+    public static JMenu getFileMenu() {
+        return fileMenu;
     }
 }
