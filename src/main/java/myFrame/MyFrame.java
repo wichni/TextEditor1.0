@@ -1,10 +1,7 @@
 package myFrame;
 
 import javax.swing.*;
-import javax.swing.undo.UndoManager;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class MyFrame extends JFrame {
     private static JTextArea textArea = new JTextArea();
@@ -38,7 +35,7 @@ public class MyFrame extends JFrame {
         final JMenu helpMenu = barMenu.getHelpMenu();
         final JRadioButton url = barMenu.getUrl();
         final JRadioButton json = barMenu.getJson();
-        final JRadioButton verify = barMenu.getVerify();
+        final JButton verify = barMenu.getVerify();
         final JMenu color = barMenu.getColorChange();
         barMenu.add(editMenu);
         barMenu.add(color);

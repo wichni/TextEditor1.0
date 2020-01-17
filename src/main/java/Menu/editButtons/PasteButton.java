@@ -1,11 +1,7 @@
 package Menu.editButtons;
 
 import javax.swing.*;
-import javax.swing.event.CaretEvent;
-import javax.swing.event.CaretListener;
 import javax.swing.text.DefaultEditorKit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class PasteButton extends JMenuItem {
 

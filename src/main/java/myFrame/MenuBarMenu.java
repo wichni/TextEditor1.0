@@ -33,7 +33,7 @@ public class MenuBarMenu extends JMenuBar {
         return group.setJsonButton();
     }
 
-    public JRadioButton getVerify() {
+    public JButton getVerify() {
         return group.setVerifyButton();
     }
 }

@@ -25,7 +25,7 @@ public class UrlAndJsonGroup extends JRadioButton{
         return jsonButton;
     }
 
-    public JRadioButton setVerifyButton() {
+    public JButton setVerifyButton() {
         verifyButton.add(verifyButton.buildVerifyButton());
 
         return verifyButton;

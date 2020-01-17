@@ -11,10 +11,10 @@ import java.awt.event.ActionListener;
 
 public class RedoButton extends JMenuItem{
     private JTextArea textArea = MyFrame.getTextArea();
+    private UndoManager redoManager = new UndoManager();
 
     public JMenuItem setRedoButton() {
         JMenuItem redoButton = new JMenuItem();
-        UndoManager redoManager = new UndoManager();
         redoButton.setText("Redo");
         redoButton.setToolTipText("Redo (Ctrl + Y)");
 

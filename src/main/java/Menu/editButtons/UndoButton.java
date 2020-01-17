@@ -11,10 +11,10 @@ import java.awt.event.ActionListener;
 
 public class UndoButton extends JMenuItem {
     private JTextArea textArea = MyFrame.getTextArea();
+    private UndoManager undoManager = new UndoManager();
 
     public JMenuItem setUndoButton() {
         JMenuItem undoButton = new JMenuItem();
-        UndoManager undoManager = new UndoManager();
         undoButton.setText("Undo");
         undoButton.setToolTipText("Undo (Ctrl + Z)");
 
