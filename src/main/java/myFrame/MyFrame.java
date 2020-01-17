@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class MyFrame extends JFrame {
     private static JTextArea textArea = new JTextArea();
-    private static MenuBarMenu barMenu = new MenuBarMenu();
+    private static MyMenuBar barMenu = new MyMenuBar();
     private final JScrollPane scrollPane = new JScrollPane(textArea);
 
     public MyFrame() throws HeadlessException {

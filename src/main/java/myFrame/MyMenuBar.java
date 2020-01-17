@@ -7,7 +7,7 @@ import Menu.myMenu.UrlAndJsonGroup;
 
 import javax.swing.*;
 
-public class MenuBarMenu extends JMenuBar {
+public class MyMenuBar extends JMenuBar {
     private EditMenu editMenu = new EditMenu();
     private HelpMenu helpMenu = new HelpMenu();
     private ColorMenu colorMenu = new ColorMenu();
