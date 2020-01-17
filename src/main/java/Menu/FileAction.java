@@ -1,13 +1,15 @@
 package Menu;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.print.PrinterException;
 import java.io.*;
 
-class FileAction {
+public class FileAction {
 
-    static void clearAction(JTextArea textArea) {
-        textArea.setText("");
+    static void clearAction(JTextArea topTextArea, JTextArea bottomTextArea ) {
+        topTextArea.setText("");
+        bottomTextArea.setText("");
     }
 
     static void printAction(JTextArea textArea) {
@@ -32,7 +34,7 @@ class FileAction {
         }
     }
 
-    static void openFileAction(JTextArea textArea, JFileChooser fileChooser) {
+   public static void openFileAction(JTextArea textArea, JFileChooser fileChooser) {
         int choose = fileChooser.showOpenDialog(null);
         if (choose == JFileChooser.APPROVE_OPTION) {
             File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
@@ -43,6 +45,7 @@ class FileAction {
                 while ((line = reader.readLine()) != null) {
                     textFromFile.append(line);
                 }
+                textArea.setText("");
                 textArea.append(textFromFile.toString());
             } catch (IOException ex) {
                 ex.printStackTrace();
