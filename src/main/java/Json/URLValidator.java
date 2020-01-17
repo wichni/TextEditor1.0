@@ -1,4 +1,4 @@
-package Menu.Json;
+package Json;
 
 import myFrame.MyFrame;
 import org.apache.commons.validator.routines.UrlValidator;
