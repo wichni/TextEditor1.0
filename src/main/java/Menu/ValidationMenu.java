@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ValidationMenu extends JPanel implements ActionListener {
-    JsonValidator jsonValidator;
     private JPanel radioPanel;
     ButtonGroup buttonGroup;
     JRadioButton jsonButton;
