@@ -2,23 +2,17 @@ package myFrame;
 
 import javax.swing.*;
 import java.awt.*;
-import Menu.MyMenuBar;
-import Menu.ValidationMenu;
-
 
 public class MyFrame extends JFrame {
-    private static MyMenuBar myMenuBar = new MyMenuBar();
-    private static JScrollPane scrollPane;
-    private static int frameWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
-    private static int frameHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
-    private static JTextArea topTextArea = new JTextArea("Please enter your code");
+    private static JTextArea topTextArea = new JTextArea();
     private static JTextArea bottomTextArea = new JTextArea("Validation result");
+    private static MyMenuBar myMenuBar = new MyMenuBar();
+    int frameWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
+    int frameHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
 
     public MyFrame() throws HeadlessException {
 
-        this.setTitle("Syntax validator");
         setFrameSize();
-        setScroll();
         setUpMenuBar();
 
         JPanel topPanel = new JPanel();
@@ -36,47 +30,16 @@ public class MyFrame extends JFrame {
         JScrollPane scroll1 = new JScrollPane(bottomTextArea);
         bottomPanel.add(scroll1, BorderLayout.CENTER);
 
-
-        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,topPanel, bottomPanel);
-
+        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, topPanel, bottomPanel);
         this.add(splitPane);
 
         this.setJMenuBar(myMenuBar);
 
-        bottomPanel.setVisible(true);
         topPanel.setVisible(true);
+        bottomPanel.setVisible(true);
 
         setCloseOperation();
         setJFrameVisible();
-    }
-
-    private void setScroll() {
-        scrollPane = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-    }
-
-    private void setCloseOperation() {
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-    }
-
-    private void setJFrameVisible() {
-        this.setVisible(true);
-    }
-
-    private void setUpMenuBar() {
-        final JMenu fileMenu = myMenuBar.getFileMenu();
-        final JMenu editMenu = myMenuBar.getEditMenu();
-        final JPopupMenu editPopUpMenu = myMenuBar.getPopUpEditMenu();
-        final ValidationMenu validationMenu = myMenuBar.getRadioButtonMenu();
-
-        myMenuBar.add(fileMenu);
-        myMenuBar.add(editMenu);
-        myMenuBar.add(editPopUpMenu);
-        myMenuBar.add(validationMenu);
-    }
-
-    private void setFrameSize() {
-        this.setSize(frameWidth / 2, frameHeight / 2);
-        this.setLocation(frameWidth / 4, frameHeight / 4);
     }
 
     public static JTextArea getTopTextArea() {
@@ -87,11 +50,30 @@ public class MyFrame extends JFrame {
         return bottomTextArea;
     }
 
-    public static void setBottomTextArea(JTextArea bottomTextArea) {
-        MyFrame.bottomTextArea = bottomTextArea;
+    private void setCloseOperation() {
+        this.setDefaultCloseOperation(3);
     }
 
-    public static void setTopTextArea(JTextArea topTextArea) {
-        MyFrame.topTextArea = topTextArea;
+    private void setJFrameVisible() {
+        this.setVisible(true);
+    }
+
+    private void setUpMenuBar() {
+        final JMenu fileMenu = myMenuBar.getFileMenu();
+        final JMenu editMenu = myMenuBar.getEditMenu();
+        final JMenu helpMenu = myMenuBar.getHelpMenu();
+        final JMenu color = myMenuBar.getColorChange();
+        final JPanel validationMenu = myMenuBar.getRadioButtonMenu();
+
+        myMenuBar.add(fileMenu);
+        myMenuBar.add(editMenu);
+        myMenuBar.add(color);
+        myMenuBar.add(validationMenu);
+        myMenuBar.add(helpMenu);
+    }
+
+    private void setFrameSize() {
+        this.setSize(frameWidth / 2, frameHeight / 2);
+        this.setLocation(frameWidth / 4, frameHeight / 4);
     }
 }

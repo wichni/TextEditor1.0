@@ -1,17 +1,22 @@
 package myFrame;
 
+import Menu.ValidationMenu;
 import Menu.myMenu.ColorMenu;
 import Menu.myMenu.EditMenu;
 import Menu.myMenu.HelpMenu;
-import Menu.myMenu.UrlAndJsonGroup;
+import Menu.FileMenu;
 
 import javax.swing.*;
 
 public class MyMenuBar extends JMenuBar {
+    private FileMenu fileMenu = new FileMenu();
     private EditMenu editMenu = new EditMenu();
     private HelpMenu helpMenu = new HelpMenu();
     private ColorMenu colorMenu = new ColorMenu();
-    private UrlAndJsonGroup group = new UrlAndJsonGroup();
+
+    public JMenu getFileMenu() {
+        return fileMenu.setUpFileMenu();
+    }
 
     public JMenu getEditMenu() {
         return editMenu.setUpEditMenu();
@@ -25,15 +30,7 @@ public class MyMenuBar extends JMenuBar {
         return helpMenu.setHelpMenu();
     }
 
-    public JRadioButton getUrl() {
-        return group.setUrlButton();
-    }
-
-    public JRadioButton getJson() {
-        return group.setJsonButton();
-    }
-
-    public JButton getVerify() {
-        return group.setVerifyButton();
+    public ValidationMenu getRadioButtonMenu() {
+        return new ValidationMenu();
     }
 }

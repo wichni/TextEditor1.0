@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-class FileMenu extends JMenu implements ActionListener {
+public class FileMenu extends JMenu implements ActionListener {
     private static JMenu fileMenu;
     private JMenuItem open;
     private JMenuItem save;
@@ -20,11 +20,8 @@ class FileMenu extends JMenu implements ActionListener {
     public JMenu setUpFileMenu() {
 
         setMenuLabel();
-
         setMenuItems();
-
         addListeners();
-
         addItemsToJMenu();
 
         return fileMenu;
@@ -72,9 +69,5 @@ class FileMenu extends JMenu implements ActionListener {
         } else if (source == newFile) {
             FileAction.clearAction(textArea, bottomTextArea);
         }
-    }
-
-    public static JMenu getFileMenu() {
-        return fileMenu;
     }
 }

@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class RedoButton extends JMenuItem{
-    private JTextArea textArea = MyFrame.getTextArea();
+    private JTextArea textArea = MyFrame.getTopTextArea();
     private UndoManager redoManager = new UndoManager();
 
     public JMenuItem setRedoButton() {

@@ -1,7 +1,6 @@
 package Menu;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.print.PrinterException;
 import java.io.*;
 
@@ -34,7 +33,7 @@ public class FileAction {
         }
     }
 
-   public static void openFileAction(JTextArea textArea, JFileChooser fileChooser) {
+    public static void openFileAction(JTextArea textArea, JFileChooser fileChooser) {
         int choose = fileChooser.showOpenDialog(null);
         if (choose == JFileChooser.APPROVE_OPTION) {
             File file = new File(fileChooser.getSelectedFile().getAbsolutePath());

@@ -9,7 +9,7 @@ import java.awt.event.MouseEvent;
 
 public class EditMenu extends JMenu {
     private static JMenu editMenu;
-    private JTextArea textArea = MyFrame.getTextArea();
+    private JTextArea textArea = MyFrame.getTopTextArea();
     private CutButton cutButton;
     private CopyButton copyButton;
     private PasteButton pasteButton;

@@ -2,7 +2,7 @@ package Menu;
 
 import Json.CSVValidator;
 import Json.JsonValidator;
-import Json.URLValidator;
+import Menu.Json.URLValidator;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
