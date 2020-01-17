@@ -1,81 +1,79 @@
 package myFrame;
 
-import Menu.MyMenuBar;
-import Menu.editButtons.CopyButton;
-import Menu.editButtons.CutButton;
-import Menu.editButtons.PasteButton;
-import Menu.radioButton.JsonButton;
-import Menu.radioButton.UrlButton;
-import Menu.radioButton.VerifyButton;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
-public class MyFrame {
-    private static JFrame jFrame = new JFrame("Text editor");
-    private final MyMenuBar menuBar = new MyMenuBar();
-    private final JTextArea textArea = new JTextArea();
-    private final JScrollPane scrollPane = new JScrollPane(textArea);
+public class MyFrame extends JFrame {
+    private static JTextArea topTextArea = new JTextArea();
+    private static JTextArea bottomTextArea = new JTextArea("Validation result");
+    private static MyMenuBar myMenuBar = new MyMenuBar();
+    int frameWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
+    int frameHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
 
     public MyFrame() throws HeadlessException {
-    }
 
-    public void initEditor() {
-        jFrame.getContentPane().add(scrollPane);
-        setMenuBar();
-        setMouseAdapter();
         setFrameSize();
+        setUpMenuBar();
+
+        JPanel topPanel = new JPanel();
+
+        JPanel bottomPanel = new JPanel();
+
+        topPanel.add(topTextArea);
+        bottomPanel.add(bottomTextArea);
+
+        topPanel.setLayout(new BorderLayout());
+        JScrollPane scroll = new JScrollPane(topTextArea);
+        topPanel.add(scroll, BorderLayout.CENTER);
+
+        bottomPanel.setLayout(new BorderLayout());
+        JScrollPane scroll1 = new JScrollPane(bottomTextArea);
+        bottomPanel.add(scroll1, BorderLayout.CENTER);
+
+        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, topPanel, bottomPanel);
+        this.add(splitPane);
+
+        this.setJMenuBar(myMenuBar);
+
+        topPanel.setVisible(true);
+        bottomPanel.setVisible(true);
+
         setCloseOperation();
         setJFrameVisible();
     }
 
+    public static JTextArea getTopTextArea() {
+        return topTextArea;
+    }
+
+    public static JTextArea getBottomTextArea() {
+        return bottomTextArea;
+    }
+
     private void setCloseOperation() {
-        jFrame.setDefaultCloseOperation(3);
+        this.setDefaultCloseOperation(3);
     }
 
     private void setJFrameVisible() {
-        jFrame.setVisible(true);
+        this.setVisible(true);
     }
 
-    private MyMenuBar setMenuBar() {
-        menuBar.add(menuBar.setFileMenu());
-        menuBar.add(menuBar.setEditMenu());
-        menuBar.add(menuBar.setColorChange());
-        menuBar.add(menuBar.setHelpMenu());
-        menuBar.add(menuBar.setUrlButton());
-        menuBar.add(menuBar.setJsonButton());
-        jFrame.setJMenuBar(menuBar);
+    private void setUpMenuBar() {
+        final JMenu fileMenu = myMenuBar.getFileMenu();
+        final JMenu editMenu = myMenuBar.getEditMenu();
+        final JMenu helpMenu = myMenuBar.getHelpMenu();
+        final JMenu color = myMenuBar.getColorChange();
+        final JPanel validationMenu = myMenuBar.getRadioButtonMenu();
 
-        return menuBar;
-    }
-
-    private JButton setMouseAdapter() {
-        JButton button = new JButton();
-        JPopupMenu popupMenu = new JPopupMenu();
-        CutButton cutButton = new CutButton();
-        CopyButton copyButton = new CopyButton();
-        PasteButton pasteButton = new PasteButton();
-        popupMenu.add(cutButton.setCutButton());
-        popupMenu.add(copyButton.setCopyButton());
-        popupMenu.add(pasteButton.setPasteButton());
-
-        textArea.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                if (SwingUtilities.isRightMouseButton(e)) {
-                    popupMenu.show(e.getComponent(), e.getX(), e.getY());
-                }
-            }
-        });
-        return button;
+        myMenuBar.add(fileMenu);
+        myMenuBar.add(editMenu);
+        myMenuBar.add(color);
+        myMenuBar.add(validationMenu);
+        myMenuBar.add(helpMenu);
     }
 
     private void setFrameSize() {
-        int width = Toolkit.getDefaultToolkit().getScreenSize().width;
-        int height = Toolkit.getDefaultToolkit().getScreenSize().height;
-        jFrame.setSize(width / 2, height / 2);
-        jFrame.setLocation(width / 4, height / 4);
+        this.setSize(frameWidth / 2, frameHeight / 2);
+        this.setLocation(frameWidth / 4, frameHeight / 4);
     }
 }
