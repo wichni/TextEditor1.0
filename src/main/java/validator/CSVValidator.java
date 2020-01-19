@@ -1,4 +1,4 @@
-package Json;
+package validator;
 
 import myFrame.MyFrame;
 
@@ -6,8 +6,8 @@ import javax.swing.*;
 import java.util.regex.Pattern;
 
 public class CSVValidator {
-    private final static String validMSG = "CSV id valid!";
-    private final static String invalidMSG = "CSV id invalid!";
+    private final static String validMSG = "CSV is valid!";
+    private final static String invalidMSG = "CSV is invalid!";
 
     private static JTextArea getTextArea() {
         return MyFrame.getTopTextArea();
@@ -17,11 +17,10 @@ public class CSVValidator {
 
 
     public static void validate() {
-        boolean valid=true;
+        boolean valid = true;
         boolean matches = true;
 
         final String[] split = getTextArea().getText().split("\n");
-
 
 
         for (String s : split) {
