@@ -12,6 +12,7 @@ public class MyFrame extends JFrame {
 
     public MyFrame() throws HeadlessException {
 
+        this.setTitle("Text editor");
         setFrameSize();
         setUpMenuBar();
 
@@ -19,24 +20,18 @@ public class MyFrame extends JFrame {
 
         JPanel bottomPanel = new JPanel();
 
-        topPanel.add(topTextArea);
-        bottomPanel.add(bottomTextArea);
-
-        topPanel.setLayout(new BorderLayout());
         JScrollPane scroll = new JScrollPane(topTextArea);
+        topPanel.setLayout(new BorderLayout());
         topPanel.add(scroll, BorderLayout.CENTER);
 
-        bottomPanel.setLayout(new BorderLayout());
         JScrollPane scroll1 = new JScrollPane(bottomTextArea);
+        bottomPanel.setLayout(new BorderLayout());
         bottomPanel.add(scroll1, BorderLayout.CENTER);
 
         JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, topPanel, bottomPanel);
         this.add(splitPane);
 
         this.setJMenuBar(myMenuBar);
-
-        topPanel.setVisible(true);
-        bottomPanel.setVisible(true);
 
         setCloseOperation();
         setJFrameVisible();
