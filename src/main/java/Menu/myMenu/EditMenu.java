@@ -9,7 +9,7 @@ import java.awt.event.MouseEvent;
 
 public class EditMenu extends JMenu {
     private static JMenu editMenu;
-    private JTextArea textArea = MyFrame.getTopTextArea();
+    private JTextPane textPane = MyFrame.getTextPane();
     private CutButton cutButton;
     private CopyButton copyButton;
     private PasteButton pasteButton;
@@ -48,20 +48,15 @@ public class EditMenu extends JMenu {
     private JButton setMouseAdapter() {
         JButton button = new JButton();
         JPopupMenu popupMenu = new JPopupMenu();
-        CutButton cutButton = new CutButton();
-        CopyButton copyButton = new CopyButton();
-        PasteButton pasteButton = new PasteButton();
-        UndoButton undoButton = new UndoButton();
-        RedoButton redoButton = new RedoButton();
         popupMenu.add(cutButton.setCutButton());
         popupMenu.add(copyButton.setCopyButton());
         popupMenu.add(pasteButton.setPasteButton());
         popupMenu.add(undoButton.setUndoButton());
         popupMenu.add(redoButton.setRedoButton());
 
-        textArea.addMouseListener(new MouseAdapter() {
+        textPane.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseReleased(MouseEvent e) {
+            public void mouseClicked(MouseEvent e) {
                 if (SwingUtilities.isRightMouseButton(e)) {
                     popupMenu.show(e.getComponent(), e.getX(), e.getY());
                 }

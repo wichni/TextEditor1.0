@@ -1,10 +1,10 @@
 package myFrame;
 
-import Menu.ValidationMenu;
+import Menu.myMenu.ValidationMenu;
 import Menu.myMenu.ColorMenu;
 import Menu.myMenu.EditMenu;
 import Menu.myMenu.HelpMenu;
-import Menu.FileMenu;
+import Menu.myMenu.FileMenu;
 
 import javax.swing.*;
 

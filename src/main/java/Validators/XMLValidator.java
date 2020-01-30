@@ -1,4 +1,4 @@
-package validator;
+package Validators;
 
 import myFrame.MyFrame;
 import org.xml.sax.SAXException;

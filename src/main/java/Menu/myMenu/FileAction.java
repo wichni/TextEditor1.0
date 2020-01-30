@@ -1,13 +1,12 @@
-package Menu;
+package Menu.myMenu;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.print.PrinterException;
 import java.io.*;
 
 public class FileAction {
 
-    static void clearAction(JTextArea topTextArea, JTextArea bottomTextArea ) {
+    static void clearAction(JTextPane topTextArea, JTextArea bottomTextArea ) {
         topTextArea.setText("");
         bottomTextArea.setText("");
     }
