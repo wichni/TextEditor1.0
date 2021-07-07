@@ -1,4 +1,4 @@
-package Menu;
+package Menu.myMenu;
 
 import javax.swing.*;
 import java.awt.print.PrinterException;
@@ -6,7 +6,7 @@ import java.io.*;
 
 public class FileAction {
 
-    static void clearAction(JTextArea topTextArea, JTextArea bottomTextArea ) {
+    static void clearAction(JTextPane topTextArea, JTextArea bottomTextArea ) {
         topTextArea.setText("");
         bottomTextArea.setText("");
     }
@@ -33,7 +33,7 @@ public class FileAction {
         }
     }
 
-    public static void openFileAction(JTextArea textArea, JFileChooser fileChooser) {
+   public static void openFileAction(JTextArea textArea, JFileChooser fileChooser) {
         int choose = fileChooser.showOpenDialog(null);
         if (choose == JFileChooser.APPROVE_OPTION) {
             File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
@@ -43,6 +43,7 @@ public class FileAction {
                 String line;
                 while ((line = reader.readLine()) != null) {
                     textFromFile.append(line);
+                    textFromFile.append("\n");
                 }
                 textArea.setText("");
                 textArea.append(textFromFile.toString());

@@ -1,4 +1,4 @@
-package Menu;
+package Menu.myMenu;
 
 import myFrame.MyFrame;
 
@@ -20,8 +20,11 @@ public class FileMenu extends JMenu implements ActionListener {
     public JMenu setUpFileMenu() {
 
         setMenuLabel();
+
         setMenuItems();
+
         addListeners();
+
         addItemsToJMenu();
 
         return fileMenu;
@@ -52,11 +55,11 @@ public class FileMenu extends JMenu implements ActionListener {
         fileMenu = new JMenu("File");
     }
 
-
     @Override
     public void actionPerformed(ActionEvent e) {
         final Object source = e.getSource();
         final JTextArea textArea = MyFrame.getTopTextArea();
+        final JTextPane textPane = MyFrame.getTextPane();
         final JTextArea bottomTextArea = MyFrame.getBottomTextArea();
         JFileChooser fileChooser = new JFileChooser();
 
@@ -67,7 +70,7 @@ public class FileMenu extends JMenu implements ActionListener {
         } else if (source == print) {
             FileAction.printAction(textArea);
         } else if (source == newFile) {
-            FileAction.clearAction(textArea, bottomTextArea);
+            FileAction.clearAction(textPane, bottomTextArea);
         }
     }
 }

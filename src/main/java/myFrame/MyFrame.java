@@ -6,31 +6,27 @@ import java.awt.*;
 public class MyFrame extends JFrame {
     private static JTextArea topTextArea = new JTextArea();
     private static JTextArea bottomTextArea = new JTextArea("Validation result");
+    private static JTextPane textPane = new JTextPane();
     private static MyMenuBar myMenuBar = new MyMenuBar();
     int frameWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
     int frameHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
 
     public MyFrame() throws HeadlessException {
 
+        this.setTitle("Text editor");
         setFrameSize();
         setUpMenuBar();
 
-        JPanel topPanel = new JPanel();
+        JPanel topPanel = new JPanel(new BorderLayout());
+        topPanel.add(textPane);
+        JScrollPane scrollTopPane = new JScrollPane(textPane);
+        topPanel.add(scrollTopPane, BorderLayout.CENTER);
 
-        JPanel bottomPanel = new JPanel();
-
-        topPanel.add(topTextArea);
-        bottomPanel.add(bottomTextArea);
-
-        topPanel.setLayout(new BorderLayout());
-        JScrollPane scroll = new JScrollPane(topTextArea);
-        topPanel.add(scroll, BorderLayout.CENTER);
-
-        bottomPanel.setLayout(new BorderLayout());
+        JPanel bottomPanel = new JPanel(new BorderLayout());
         JScrollPane scroll1 = new JScrollPane(bottomTextArea);
         bottomPanel.add(scroll1, BorderLayout.CENTER);
 
-        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, topPanel, bottomPanel);
+        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, bottomPanel, topPanel);
         this.add(splitPane);
 
         this.setJMenuBar(myMenuBar);
@@ -48,6 +44,10 @@ public class MyFrame extends JFrame {
 
     public static JTextArea getBottomTextArea() {
         return bottomTextArea;
+    }
+
+    public static JTextPane getTextPane() {
+        return textPane;
     }
 
     private void setCloseOperation() {
